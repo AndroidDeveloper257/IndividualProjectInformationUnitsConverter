@@ -2,16 +2,16 @@ package com.example.individualprojectinformationunitsconverter
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.example.individualprojectinformationunitsconverter.adapters.ResultUnitAdapter
 import com.example.individualprojectinformationunitsconverter.databinding.ActivityMainBinding
 import com.example.individualprojectinformationunitsconverter.databinding.InfoDialogItemBinding
 import com.example.individualprojectinformationunitsconverter.databinding.ResultUnitChoiceDialogItemBinding
+import com.example.individualprojectinformationunitsconverter.utils.BIT_ACRONYM
 import com.example.individualprojectinformationunitsconverter.utils.calculate
 import com.example.individualprojectinformationunitsconverter.utils.getUnitList
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             setContentView(root)
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.statusBarColor = getColor(R.color.blue)
-            resultUnit = getString(R.string.bit_acronym)
+            resultUnit = BIT_ACRONYM
             toolbar.setOnMenuItemClickListener { menuItem ->
                 if (menuItem.itemId == R.id.info) {
                     showInfoDialog()
@@ -48,13 +48,15 @@ class MainActivity : AppCompatActivity() {
                 chooseResultUnit()
             }
             convertIv.setOnClickListener {
-                if (calculate(
-                        query = queryEt.text.toString(),
-                        resultUnit = resultUnit
-                    ) == null
-                ) {
+                val result = calculate(
+                    query = queryEt.text.toString(),
+                    resultUnit = resultUnit
+                )
+                if (result == null) {
                     queryEt.setBackgroundResource(R.drawable.error_edit_text_background)
                     showInfoDialog()
+                } else {
+                    resultTv.text = result.toString()
                 }
             }
             queryEt.addTextChangedListener {
@@ -72,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 resultUnitChoiceAlertDialog.setView(root)
                 resultUnitChoiceAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 val resultUnitAdapter = ResultUnitAdapter(
-                    getUnitList(this@MainActivity)
+                    getUnitList()
                 ) { myUnit ->
                     resultUnitTv.text = myUnit.unitName
                     resultUnit = myUnit.unitAcronym

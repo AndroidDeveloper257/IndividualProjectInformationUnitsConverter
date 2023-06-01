@@ -4,67 +4,87 @@ import android.content.Context
 import com.example.individualprojectinformationunitsconverter.R
 import com.example.individualprojectinformationunitsconverter.models.MyUnit
 
-fun getUnitList(context: Context): ArrayList<MyUnit> {
+fun getUnitList(): ArrayList<MyUnit> {
     val list = ArrayList<MyUnit>()
+    /**
+     * bits
+     */
     list.add(
         MyUnit(
-            context.getString(R.string.bit_acronym),
-            context.getString(R.string.bit_name)
+            unitName = BIT_NAME,
+            unitAcronym = BIT_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.byte_acronym),
-            context.getString(R.string.byte_name)
+            unitName = KILOBIT_NAME,
+            unitAcronym = KILOBIT_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.kilobyte_acronym),
-            context.getString(R.string.kilobyte_name)
+            unitName = MEGABIT_NAME,
+            unitAcronym = MEGABIT_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.megabyte_acronym),
-            context.getString(R.string.megabyte_name)
+            unitName = GIGABIT_NAME,
+            unitAcronym = GIGABIT_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.gigabyte_acronym),
-            context.getString(R.string.gigabyte_name)
+            unitName = TERABIT_NAME,
+            unitAcronym = TERABIT_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.terabyte_acronym),
-            context.getString(R.string.terabyte_name)
+            unitName = PETABIT_NAME,
+            unitAcronym = PETABIT_ACRONYM
+        )
+    )
+
+    /**
+     * bytes
+     */
+    list.add(
+        MyUnit(
+            unitName = BYTE_NAME,
+            unitAcronym = BYTE_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.petabyte_acronym),
-            context.getString(R.string.petabyte_name)
+            unitName = KILOBYTE_NAME,
+            unitAcronym = KILOBYTE_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.exabyte_acronym),
-            context.getString(R.string.exabyte_name)
+            unitName = MEGABYTE_NAME,
+            unitAcronym = MEGABYTE_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.zettabyte_acronym),
-            context.getString(R.string.zettabyte_name)
+            unitName = GIGABYTE_NAME,
+            unitAcronym = GIGABYTE_ACRONYM
         )
     )
     list.add(
         MyUnit(
-            context.getString(R.string.yottabyte_acronym),
-            context.getString(R.string.yottabyte_name)
+            unitName = TERABYTE_NAME,
+            unitAcronym = TERABYTE_ACRONYM
         )
     )
+    list.add(
+        MyUnit(
+            unitName = PETABYTE_NAME,
+            unitAcronym = PETABYTE_ACRONYM
+        )
+    )
+
     return list
 }

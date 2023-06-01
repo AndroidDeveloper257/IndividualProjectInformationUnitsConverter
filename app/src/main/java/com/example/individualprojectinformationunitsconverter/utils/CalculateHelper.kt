@@ -1,13 +1,11 @@
 package com.example.individualprojectinformationunitsconverter.utils
 
-import android.content.Context
 import android.util.Log
 import com.example.individualprojectinformationunitsconverter.R
 
 fun calculate(
     query: String,
-    resultUnit: String,
-    context: Context
+    resultUnit: String
 ): Double? {
     try {
         var problem = query
@@ -24,7 +22,7 @@ fun calculate(
         /**
          * all spaces in first will be removed and all commas replaced to points
          */
-        var result: Double? = 0.0
+        var result: Double = 0.0
         var valueList = ArrayList<Double>()
         var unitList = ArrayList<String>()
         var last = 0
@@ -68,9 +66,13 @@ fun calculate(
         }
         if (valueList.size != unitList.size) return null
         for (index in 0 until valueList.size) {
-            result?.plus(valueList[index] * multiply(unitList[index], context))
+            val k = valueList[index] * multiply(unitList[index])
+//            result?.plus(valueList[index] * multiply(unitList[index], context))
+            result += k
+            Log.d(TAG, "calculate: $k")
+            Log.d(TAG, "calculate: $result")
         }
-        return result
+        return getResult(result, resultUnit)
     } catch (e: java.lang.Exception) {
         Log.e(TAG, "calculate: $e")
         Log.e(TAG, "calculate: ${e.message}")
@@ -80,39 +82,63 @@ fun calculate(
     }
 }
 
-fun multiply(acronym: String, context: Context): Double {
-    return when (acronym) {
-        context.getString(R.string.bit_acronym) -> {
+fun getResult(result: Double, resultUnit: String): Double? {
+
+}
+
+fun multiply(acronym: String): Double {
+    return when (acronym.uppercase()) {
+        BIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 1.0")
             1.0
         }
-        context.getString(R.string.byte_acronym) -> {
+        KILOBIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8.0")
+            1e3
+        }
+        MEGABIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 1000.0")
+            1e6
+        }
+        GIGABIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8000000.0")
+            1e9
+        }
+        TERABIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8000000000.0")
+            1e12
+        }
+        PETABIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8000000000000.0")
+            1e15
+        }
+        BYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8e15")
             8.0
         }
-        context.getString(R.string.kilobyte_acronym) -> {
-            1.0
+        KILOBYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8e15")
+            8e3
         }
-        context.getString(R.string.megabyte_acronym) -> {
-            1.0
+        MEGABYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8e15")
+            8e6
         }
-        context.getString(R.string.gigabyte_acronym) -> {
-            1.0
+        GIGABYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8e15")
+            8e9
         }
-        context.getString(R.string.terabyte_acronym) -> {
-            1.0
+        TERABYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8e15")
+            8e12
         }
-        context.getString(R.string.petabyte_acronym) -> {
-            1.0
+        PETABYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculate returned 8e15")
+            8e15
         }
-        context.getString(R.string.exabyte_acronym) -> {
-            1.0
-        }
-        context.getString(R.string.zettabyte_acronym) -> {
-            1.0
-        }
-        context.getString(R.string.yottabyte_acronym) -> {
-            1.0
-        }
+
         else -> {
+            Log.d(TAG, "multiply: calculate returned 0.0")
             0.0
         }
     }
