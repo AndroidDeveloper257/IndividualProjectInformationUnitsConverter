@@ -32,18 +32,32 @@
 
     <EditText
         android:id="@+id/query_et"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_50sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/custom_background"
-        android:hint="Type..."
+        android:hint="@string/type"
         android:padding="@dimen/_10sdp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="@dimen/_10ssp"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/copy_query"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <ImageView
+        android:id="@+id/copy_query"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:padding="@dimen/_8sdp"
+        android:src="@drawable/ic_copy"
+        app:layout_constraintBottom_toBottomOf="@id/query_et"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/query_et" />
 
     <ImageView
         android:id="@+id/convert_iv"
@@ -51,8 +65,8 @@
         android:layout_height="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_30sdp"
         android:src="@drawable/ic_convert"
-        app:layout_constraintLeft_toLeftOf="@id/query_et"
-        app:layout_constraintRight_toRightOf="@id/query_et"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/query_et"
         app:tint="@color/white" />
 
@@ -61,11 +75,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_30sdp"
-        android:text="0"
+        android:text="0.0"
         android:textColor="@color/white"
-        android:textSize="@dimen/_10ssp"
+        android:textSize="@dimen/_15ssp"
         app:layout_constraintLeft_toLeftOf="@id/query_et"
         app:layout_constraintTop_toBottomOf="@+id/convert_iv" />
+
+    <LinearLayout
+        android:id="@+id/copy_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="@id/result_tv"
+        app:layout_constraintTop_toBottomOf="@id/result_tv">
+
+        <ImageView
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:src="@drawable/ic_copy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="Copy result to clipboard"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/result_unit_layout"
@@ -82,13 +120,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/bit_acronym"
+            android:text="b"
             android:textColor="@color/white"
-            android:textSize="@dimen/_10ssp" />
+            android:textSize="@dimen/_15ssp" />
 
         <ImageView
-            android:layout_width="@dimen/_10sdp"
-            android:layout_height="@dimen/_10sdp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_down" />
 

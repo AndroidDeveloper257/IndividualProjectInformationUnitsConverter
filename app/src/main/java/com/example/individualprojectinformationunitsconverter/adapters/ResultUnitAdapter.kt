@@ -3,7 +3,7 @@ package com.example.individualprojectinformationunitsconverter.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.individualprojectinformationunitsconverter.databinding.ResultUnitChoiceItemBinding
+import com.example.individualprojectinformationunitsconverter.databinding.UnitsChoiceItemBinding
 import com.example.individualprojectinformationunitsconverter.models.MyUnit
 
 class ResultUnitAdapter(
@@ -12,7 +12,7 @@ class ResultUnitAdapter(
 ) : RecyclerView.Adapter<ResultUnitAdapter.ResultUnitViewHolder>() {
 
     inner class ResultUnitViewHolder(
-        private val itemBinding: ResultUnitChoiceItemBinding
+        private val itemBinding: UnitsChoiceItemBinding
     ) : RecyclerView.ViewHolder(itemBinding.root) {
         fun onBind(myUnit: MyUnit) {
             itemBinding.apply {
@@ -28,7 +28,7 @@ class ResultUnitAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultUnitViewHolder {
         return ResultUnitViewHolder(
-            ResultUnitChoiceItemBinding.inflate(
+            UnitsChoiceItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

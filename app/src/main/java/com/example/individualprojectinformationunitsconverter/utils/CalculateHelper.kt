@@ -1,12 +1,12 @@
 package com.example.individualprojectinformationunitsconverter.utils
 
 import android.util.Log
-import com.example.individualprojectinformationunitsconverter.R
 
 fun calculate(
     query: String,
     resultUnit: String
 ): Double? {
+    Log.d(TAG, "calculate: calculating progress calculating $query to $resultUnit")
     try {
         var problem = query
         while (problem.startsWith(" ")) {
@@ -22,9 +22,9 @@ fun calculate(
         /**
          * all spaces in first will be removed and all commas replaced to points
          */
-        var result: Double = 0.0
-        var valueList = ArrayList<Double>()
-        var unitList = ArrayList<String>()
+        var result = 0.0
+        val valueList = ArrayList<Double>()
+        val unitList = ArrayList<String>()
         var last = 0
         for (index in problem.indices) {
             val char = problem[index]
@@ -59,86 +59,139 @@ fun calculate(
             }
         }
         valueList.forEach {
-            Log.d(TAG, "calculate: $it")
+            Log.d(TAG, "calculate: calculating progress $it")
         }
         unitList.forEach {
-            Log.d(TAG, "calculate: $it")
+            Log.d(TAG, "calculate: calculating progress $it")
         }
         if (valueList.size != unitList.size) return null
         for (index in 0 until valueList.size) {
             val k = valueList[index] * multiply(unitList[index])
-//            result?.plus(valueList[index] * multiply(unitList[index], context))
             result += k
-            Log.d(TAG, "calculate: $k")
-            Log.d(TAG, "calculate: $result")
+            Log.d(TAG, "calculate: calculating progress $k")
+            Log.d(TAG, "calculate: calculating progress $result")
         }
         return getResult(result, resultUnit)
     } catch (e: java.lang.Exception) {
-        Log.e(TAG, "calculate: $e")
-        Log.e(TAG, "calculate: ${e.message}")
-        Log.e(TAG, "calculate: ${e.printStackTrace()}")
-        Log.e(TAG, "calculate: ${e.stackTrace}")
+        Log.e(TAG, "calculate: calculating progress $e")
+        Log.e(TAG, "calculate: calculating progress ${e.message}")
+        Log.e(TAG, "calculate: calculating progress ${e.printStackTrace()}")
+        Log.e(TAG, "calculate: calculating progress ${e.stackTrace}")
         return null
     }
 }
 
-fun getResult(result: Double, resultUnit: String): Double? {
+fun getResult(result: Double, resultUnit: String): Double {
+    return when (resultUnit) {
+        BIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $BIT_NAME")
+            result
+        }
+        KILOBIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $KILOBIT_NAME")
+            result / 1e3
+        }
+        MEGABIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $MEGABIT_NAME")
+            result / 1e6
+        }
+        GIGABIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $GIGABIT_NAME")
+            result / 1e9
+        }
+        TERABIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $TERABIT_NAME")
+            result / 1e12
+        }
+        PETABIT_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $PETABIT_NAME")
+            result / 1e15
+        }
+        BYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $BYTE_NAME")
+            result / 8
+        }
+        KILOBYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $KILOBYTE_NAME")
+            result / (8e3)
+        }
+        MEGABYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $MEGABYTE_NAME")
+            result / (8e6)
+        }
+        GIGABYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $GIGABYTE_NAME")
+            result / (8e9)
+        }
+        TERABYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $TERABYTE_NAME")
+            result / (8e12)
+        }
+        PETABYTE_ACRONYM -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to $PETABYTE_NAME")
+            result / (8e15)
+        }
 
+        else -> {
+            Log.d(TAG, "multiply: calculating progress $BIT_NAME to unknown")
+            0.0
+        }
+    }
 }
 
 fun multiply(acronym: String): Double {
-    return when (acronym.uppercase()) {
+    return when (acronym) {
         BIT_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 1.0")
+            Log.d(TAG, "multiply: calculating progress returned 1.0")
             1.0
         }
         KILOBIT_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8.0")
+            Log.d(TAG, "multiply: calculating progress returned 8.0")
             1e3
         }
         MEGABIT_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 1000.0")
+            Log.d(TAG, "multiply: calculating progress returned 1000.0")
             1e6
         }
         GIGABIT_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8000000.0")
+            Log.d(TAG, "multiply: calculating progress returned 8000000.0")
             1e9
         }
         TERABIT_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8000000000.0")
+            Log.d(TAG, "multiply: calculating progress returned 8000000000.0")
             1e12
         }
         PETABIT_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8000000000000.0")
+            Log.d(TAG, "multiply: calculating progress returned 8000000000000.0")
             1e15
         }
         BYTE_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8e15")
+            Log.d(TAG, "multiply: calculating progress returned 8e15")
             8.0
         }
         KILOBYTE_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8e15")
+            Log.d(TAG, "multiply: calculating progress returned 8e15")
             8e3
         }
         MEGABYTE_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8e15")
+            Log.d(TAG, "multiply: calculating progress returned 8e15")
             8e6
         }
         GIGABYTE_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8e15")
+            Log.d(TAG, "multiply: calculating progress returned 8e15")
             8e9
         }
         TERABYTE_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8e15")
+            Log.d(TAG, "multiply: calculating progress returned 8e15")
             8e12
         }
         PETABYTE_ACRONYM -> {
-            Log.d(TAG, "multiply: calculate returned 8e15")
+            Log.d(TAG, "multiply: calculating progress returned 8e15")
             8e15
         }
 
         else -> {
-            Log.d(TAG, "multiply: calculate returned 0.0")
+            Log.d(TAG, "multiply: calculating progress returned 0.0")
             0.0
         }
     }

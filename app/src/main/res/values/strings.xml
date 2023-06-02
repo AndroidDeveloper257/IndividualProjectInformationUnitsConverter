@@ -1,22 +1,23 @@
 <resources>
     <string name="app_name">Converter</string>
     <string name="info">Information units converter</string>
-<!--
+    <string name="type">Type...</string>
+    <!--
 
-    <string name="bit_acronym">b</string>
-    <string name="bit_name">Bit</string>
-    <string name="byte_acronym">B</string>
-    <string name="byte_name">Byte</string>
-    <string name="kilobyte_acronym">KB</string>
-    <string name="kilobyte_name">Kilobyte</string>
-    <string name="megabyte_acronym">MB</string>
-    <string name="megabyte_name">Megabyte</string>
-    <string name="gigabyte_acronym">GB</string>
-    <string name="gigabyte_name">Gigabyte</string>
-    <string name="terabyte_acronym">TB</string>
-    <string name="terabyte_name">Terabyte</string>
-    <string name="petabyte_acronym">PB</string>
-    <string name="petabyte_name">Petabyte</string>
--->
+        <string name="bit_acronym">b</string>
+        <string name="bit_name">Bit</string>
+        <string name="byte_acronym">B</string>
+        <string name="byte_name">Byte</string>
+        <string name="kilobyte_acronym">KB</string>
+        <string name="kilobyte_name">Kilobyte</string>
+        <string name="megabyte_acronym">MB</string>
+        <string name="megabyte_name">Megabyte</string>
+        <string name="gigabyte_acronym">GB</string>
+        <string name="gigabyte_name">Gigabyte</string>
+        <string name="terabyte_acronym">TB</string>
+        <string name="terabyte_name">Terabyte</string>
+        <string name="petabyte_acronym">PB</string>
+        <string name="petabyte_name">Petabyte</string>
+    -->
 
 </resources>
